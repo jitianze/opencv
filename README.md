@@ -28,7 +28,7 @@
 
 * 简单点讲就是：
 
-0.pkg-config(一般系统自带)   1.gcc   2.gcc-c++    3.cmake    4.gtk+*   5.ffmpeg    6.python-dev   .numpy 
+0.pkg-config(一般系统自带)   1.gcc   2.gcc-c++    3.cmake    4.gtk+*   5.ffmpeg    6.python-dev  7.numpy 
 
  
  
@@ -165,27 +165,16 @@ Required Packages
 
 ```shell
 [ 96%] Generating pyopencv_generated_include.h, pyopencv_generated_funcs.h, pyopencv_generated_types.h, pyopencv_generated_type_reg.h, 
-
-
 pyopencv_generated_ns_reg.h
-
 Traceback (most recent call last):
-
 File "/app/opencv-3.2.0/modules/python/python3/..//src2/gen2.py", line 4, in
-
 import hdr_parser, sys, re, os
-
 File "/app/opencv-3.2.0/modules/python/src2/hdr_parser.py", line 855
-
 has_mat = len(list(filter(lambda x: x[0] in {"Mat", "vector_Mat"}, args))) > 0
-
 ^
 SyntaxError: invalid syntax
-
 make[2]: *** [modules/python3/pyopencv_generated_include.h] Error 1
-
 make[1]: *** [modules/python3/CMakeFiles/opencv_python3.dir/all] Error 2
-
 make: *** [all] Error 2
 ```
 这可能是因为python2.6某些语法不支持最新版本opencv不兼容导致的，（另外听说python2.6可以进行编译，但至少我暂时不会）
@@ -197,7 +186,7 @@ make: *** [all] Error 2
 /(python2.7安装路径下)/bin/python2.7 setup.py install
 
 
-*第（8）步注意事项：先按照官网步骤执行：
+* 第（8）步注意事项：先按照官网步骤执行：
 
 cd ~/opencv
 
@@ -205,13 +194,12 @@ mkdir build
 
 cd build
 
-官网上的下一步命令是这个：cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..  
+   官网上的下一步命令是这个：cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..  
+   但是你编译完后发现并没有产生cv2.so这个模块，原因就是因为升级python导致的，使用yum 安装到系统的软件在系统中的路径设置，
 
-但是你编译完后发现并没有产生cv2.so这个模块，原因就是因为升级python导致的，使用yum 安装到系统的软件在系统中的路径设置，
+   环境变量设置的相对全面，而采用源码编译安装可能就略显.....
 
-环境变量设置的相对全面，而采用源码编译安装可能就略显.....
-
-源码编译安装python2.7后，cmake 并不能很好的识别到python相关库的位置，所以需要就行手动添加：
+   源码编译安装python2.7后，cmake 并不能很好的识别到python相关库的位置，所以需要就行手动添加：
 ```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D WITH_GPHOTO2=OFF -D PYTHON2_INCLUDE_DIR=/usr/local/python27/include/python2.7-D
 PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages
@@ -236,9 +224,9 @@ PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE
 对于很多功能不完善、性能不稳定的模块，都被添加到了extra_modules（扩展模块）里面了）
 ```
 
-cmake成功后即可进行make，make install
+  cmake成功后即可进行make，make install
 
-安装完成后在进行配置：
+  安装完成后在进行配置：
 ```shell
 echo "/usr/local/lib">> /etc/ld.so.conf
 
