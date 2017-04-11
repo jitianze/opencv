@@ -211,12 +211,9 @@ cd build
 
 源码编译安装python2.7后，cmake 并不能很好的识别到python相关库的位置，所以需要就行手动添加：
 
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D WITH_GPHOTO2=OFF -D PYTHON2_INCLUDE_DIR=/usr/local/python27/include/python2.7
-
--D PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages
-
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D WITH_GPHOTO2=OFF -D PYTHON2_INCLUDE_DIR=/usr/local/python27/include/python2.7-D
+PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages
 /numpy/core/include -D PYTHON2_PACKAGES_PATH=lib/python2.7/site-packages -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib-
-
 3.2.0/modules -D CMAKE_INSTALL_PREFIX=/usr/local .. 
 
 其中-D 的意思就是说后面要定义一些参数
@@ -270,14 +267,16 @@ source ~/.bashrc  #大功告成
 Python 2.7.13 (default, Mar 31 2017, 19:34:43) 
 
 [GCC 4.8.2] on linux2
+
 Type "help", "copyright", "credits" or "license" for more information.
+
 >>> import cv2
+
 >>> cv2.__version__
+
 '3.2.0'
+
 >>> 
-
-
-
 
 
 
