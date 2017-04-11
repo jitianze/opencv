@@ -1,8 +1,8 @@
 # opencv
-##opencv的各版本搭建工作
-##一、在centos6.5上离线搭建opencv2.4.13
+## opencv的各版本搭建工作
+## 一、在centos6.5上离线搭建opencv2.4.13
 
-*1.搭建opencv2.4.13所需环境总结：
+* 1.搭建opencv2.4.13所需环境总结：
   *官网给出的环境是：
 
 	* GCC 4.4.x or later
@@ -26,7 +26,7 @@
 	* [optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev,libdc1394-22-dev
 	
 
-*简单点讲就是：
+* 简单点讲就是：
 0.pkg-config 1.gcc  2.gcc-c++ 3.cmake 4.gtk+* 5.ffmpeg  6.python-dev 7.numpy 
 
  其中pkg-config一般系统都已经安装好
@@ -136,27 +136,28 @@ Required Packages
     * [optional] sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev  	   		    libdc1394-22-dev
 
 
-##2.步骤：
-*（1）安装gcc g++
+## 2.步骤：
 
-*（2）安装cmake
+* （1）安装gcc g++
 
-*（3）安装gtk+2.x
+* （2）安装cmake
 
-*（4）安装ffmpeg
+* （3）安装gtk+2.x
 
-*（5）安装python
+* （4）安装ffmpeg
 
-*（6）安装python-numpy
+* （5）安装python
 
-*（7）安装可选的依赖项
+* （6）安装python-numpy
 
-*（8）编译安装opencv3.2.0
+* （7）安装可选的依赖项
+
+* （8）编译安装opencv3.2.0
 
 
-##注：
+## 注：
 
-*第（5）(6)步注意事项
+* 第（5）(6)步注意事项
 
 因为在centos6.5上系统默认装的python版本为2.6.6，使用此版本编译opencv3.2.0会出现一个问题，即在 “make”到百分之九十几的时候会出现语法错误之类：
 
@@ -234,7 +235,7 @@ PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE
 cmake成功后即可进行make，make install
 
 安装完成后在进行配置：
-
+```shell
 echo "/usr/local/lib">> /etc/ld.so.conf
 
 sudo /sbin/ldconfig
@@ -254,7 +255,7 @@ echo "PYTHONPATH=/usr/local/lib/python2.7/site-packages
 export PYTHONPATH">> ~/.bashrc
 
 source ~/.bashrc  #大功告成
-
+```
 
 
 
