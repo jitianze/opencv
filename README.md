@@ -27,9 +27,11 @@
 	
 
 * 简单点讲就是：
-0.pkg-config 1.gcc  2.gcc-c++ 3.cmake 4.gtk+* 5.ffmpeg  6.python-dev 7.numpy 
 
- 其中pkg-config一般系统都已经安装好
+0.pkg-config(一般系统自带)   1.gcc   2.gcc-c++    3.cmake    4.gtk+*   5.ffmpeg    6.python-dev   .numpy 
+
+ 
+ 
 
 * （1）：安装gcc gcc-c++
 
@@ -161,6 +163,7 @@ Required Packages
 
 因为在centos6.5上系统默认装的python版本为2.6.6，使用此版本编译opencv3.2.0会出现一个问题，即在 “make”到百分之九十几的时候会出现语法错误之类：
 
+```shell
 [ 96%] Generating pyopencv_generated_include.h, pyopencv_generated_funcs.h, pyopencv_generated_types.h, pyopencv_generated_type_reg.h, 
 
 
@@ -184,7 +187,7 @@ make[2]: *** [modules/python3/pyopencv_generated_include.h] Error 1
 make[1]: *** [modules/python3/CMakeFiles/opencv_python3.dir/all] Error 2
 
 make: *** [all] Error 2
-
+```
 这可能是因为python2.6某些语法不支持最新版本opencv不兼容导致的，（另外听说python2.6可以进行编译，但至少我暂时不会）
 
 解决办法：升级python至2.7，然后进行编译安装。但是在linux升级python会导致很多问题，像yum、pip、easy_install等不能用，需要重新进行配置
@@ -209,28 +212,29 @@ cd build
 环境变量设置的相对全面，而采用源码编译安装可能就略显.....
 
 源码编译安装python2.7后，cmake 并不能很好的识别到python相关库的位置，所以需要就行手动添加：
-
+```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D WITH_GPHOTO2=OFF -D PYTHON2_INCLUDE_DIR=/usr/local/python27/include/python2.7-D
 PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages
 /numpy/core/include -D PYTHON2_PACKAGES_PATH=lib/python2.7/site-packages -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib-
 3.2.0/modules -D CMAKE_INSTALL_PREFIX=/usr/local .. 
+```
 
 其中-D 的意思就是说后面要定义一些参数
+```shell
+-D WITH_GPHOTO2=OFF  #可能编译过程会发生一些关于gphoto2的报错，使用 WITH_GPHOTO2=OFF 放弃该模块的编译
 
--D WITH_GPHOTO2=OFF  可能编译过程会发生一些关于gphoto2的报错，使用 WITH_GPHOTO2=OFF 放弃该模块的编译
+-D PYTHON2_INCLUDE_DIR=/usr/local/python27/include/python2.7  #手动定义PYTHON2_INCLUDE_DIR的位置
 
--D PYTHON2_INCLUDE_DIR=/usr/local/python27/include/python2.7  手动定义PYTHON2_INCLUDE_DIR的位置
+-D PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so    #手动定义python2.7共享链接库的位置
 
--D PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so    手动定义python2.7共享链接库的位置
+-D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages/numpy/core/include  #手动定义numpy中include的位置
 
--D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages/numpy/core/include  手动定义numpy中include的位置
+-D PYTHON2_PACKAGES_PATH=lib/python2.7/site-packages    #手动定义python包路径的位置
 
--D PYTHON2_PACKAGES_PATH=lib/python2.7/site-packages    手动定义python包路径的位置
-
--D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib-3.2.0/modules  定义opencv额外模块的位置 （OpenCV从2.x到3.x是一个很大的转变，
+-D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib-3.2.0/modules  #定义opencv额外模块的位置 （OpenCV从2.x到3.x是一个很大的转变，
 
 对于很多功能不完善、性能不稳定的模块，都被添加到了extra_modules（扩展模块）里面了）
-
+```
 
 cmake成功后即可进行make，make install
 
@@ -280,12 +284,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 
 问：1.找不到cv2？
+```shell
 	Traceback (most recent call last):
 	
  	 File "<stdin>", line 1, in <module>
 	 
 	ImportError: No module named cv2.cv
-
+```
 答：
 
 前提：安装了python-numpy并且编译完成后产生了cv2.so这个库
