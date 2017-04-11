@@ -4,16 +4,28 @@ opencv的各版本搭建工作
 
 1.搭建opencv2.4.13所需环境总结：
 官网给出的环境是：
-        GCC 4.4.x or later
-        CMake 2.6 or higher
-        Git
-        GTK+2.x or higher, including headers (libgtk2.0-dev)
-        pkg-config
-        Python 2.6 or later and Numpy 1.5 or later with developer packages  (python-dev, python-numpy)
-        ffmpeg or libav development packages: libavcodec-dev, libavformat-dev,libswscale-dev
-        [optional] libtbb2 libtbb-dev
-        [optional] libdc1394 2.x
-        [optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev,libdc1394-22-dev
+
+	GCC 4.4.x or later
+	
+	CMake 2.6 or higher
+	
+	Git
+	
+	GTK+2.x or higher, including headers (libgtk2.0-dev)
+	
+	pkg-config
+	
+	Python 2.6 or later and Numpy 1.5 or later with developer packages  (python-dev, python-numpy)
+	
+	ffmpeg or libav development packages: libavcodec-dev, libavformat-dev,libswscale-dev
+	
+	[optional] libtbb2 libtbb-dev
+	
+
+	[optional] libdc1394 2.x
+	
+	[optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev,libdc1394-22-dev
+	
 
 简单点讲就是：
 0.pkg-config 1.gcc  2.gcc-c++ 3.cmake 4.gtk+* 5.ffmpeg  6.python-dev 7.numpy 
