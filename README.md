@@ -2,8 +2,7 @@
 ## opencv的各版本搭建工作
 ## 一、在centos6.5上离线搭建opencv2.4.13
 
-* 1.搭建opencv2.4.13所需环境总结：
-  *官网给出的环境是：
+* 1.搭建opencv2.4.13所需环境总结：官网给出的环境是：
 
 	* GCC 4.4.x or later
 	
@@ -101,10 +100,10 @@ redhat：使用源码进行编译
 
 
 
-##二、在centos6.5上离线搭建opencv3.2.0
+## 二、在centos6.5上离线搭建opencv3.2.0
 
 
-##1.官网给出的编译环境基本上与编译opencv2.4.13相同
+## 1.官网给出的编译环境基本上与编译opencv2.4.13相同
 
 
 Required Packages
