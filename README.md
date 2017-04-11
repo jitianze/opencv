@@ -1,38 +1,37 @@
 # opencv
-opencv的各版本搭建工作
-一、在centos6.5上离线搭建opencv2.4.13
+##opencv的各版本搭建工作
+##一、在centos6.5上离线搭建opencv2.4.13
 
-1.搭建opencv2.4.13所需环境总结：
-官网给出的环境是：
+*1.搭建opencv2.4.13所需环境总结：
+  *官网给出的环境是：
 
-	GCC 4.4.x or later
+	* GCC 4.4.x or later
 	
-	CMake 2.6 or higher
+	* CMake 2.6 or higher
 	
-	Git
+	* Git
 	
-	GTK+2.x or higher, including headers (libgtk2.0-dev)
+	* GTK+2.x or higher, including headers (libgtk2.0-dev)
 	
-	pkg-config
+	* pkg-config
 	
-	Python 2.6 or later and Numpy 1.5 or later with developer packages  (python-dev, python-numpy)
+	* Python 2.6 or later and Numpy 1.5 or later with developer packages  (python-dev, python-numpy)
 	
-	ffmpeg or libav development packages: libavcodec-dev, libavformat-dev,libswscale-dev
+	* ffmpeg or libav development packages: libavcodec-dev, libavformat-dev,libswscale-dev
 	
-	[optional] libtbb2 libtbb-dev
+	* [optional] libtbb2 libtbb-dev
+	
+	* [optional] libdc1394 2.x
+	
+	* [optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev,libdc1394-22-dev
 	
 
-	[optional] libdc1394 2.x
-	
-	[optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev,libdc1394-22-dev
-	
-
-简单点讲就是：
+*简单点讲就是：
 0.pkg-config 1.gcc  2.gcc-c++ 3.cmake 4.gtk+* 5.ffmpeg  6.python-dev 7.numpy 
 
  其中pkg-config一般系统都已经安装好
 
-（1）：安装gcc gcc-c++
+* （1）：安装gcc gcc-c++
 
 可联网情况下在ubantu上安装编译器gcc gcc-c++只需一条命令：sudo apt-get install build-essential
 
@@ -40,20 +39,19 @@ opencv的各版本搭建工作
 
 centos联网可用yum install gcc gcc-c++安装，离线情况使用源码进行编译 （网上说需要3小时，亲测30-45分钟）
 
-（2）：安装cmake
+* （2）：安装cmake
 
 联网：ubantu：sudo apt-get install cmake
 
-      centos：yum install cmake
+　　 centos：yum install cmake
       
 不联网：使用源码进行编译安装，详情见《cmake编译安装文档》
 
 另一种：在redhat上离线安装软件可以通过在其他发行版（比如centos）安装 yumdownloader（yum只下载不安装工具）
 
-        将使用 yum install * 的过程中所依赖的rpm包下载下来，再对照yum的安装过程一次进行rpm包的安装与更新
+将使用 yum install * 的过程中所依赖的rpm包下载下来，再对照yum的安装过程一次进行rpm包的安装与更新
 	
-
-（3）：安装gtk+*
+* （3）：安装gtk+*
 
 由于使用源码编译比较烦琐，编译其依赖库的过程中所遇到的问题甚多，解决相对麻烦耗时，最后甚至做无用功，
 
@@ -62,7 +60,7 @@ centos联网可用yum install gcc gcc-c++安装，离线情况使用源码进行
 pkg-config --list-all gtk
 
 
-（4）：安装ffmpeg
+* （4）：安装ffmpeg
 
 安装ffmpeg的原因是其中包含libavcodec-dev, libavformat-dev,libswscale-dev三个库文件
 
@@ -70,14 +68,14 @@ pkg-config --list-all gtk
 
 
 
-（5）：安装python-dev
+* （5）：安装python-dev
 
 由于linux自带python，当时我以为python-dev中包含其他工具，所以就通过yumdownloader方法重新更新了一下，现在看来实在没有必要。
 
 但是在redhat上python版本是4.1.2，需要进行版本更新，使用源码进行编译，详情见《python源码编译安装更新》
 
 
-（6）：安装numpy
+* （6）：安装numpy
 
 官方网站给出的numpy安装时可选项 optional，然而不安装numpy进行编译opencv后python调用cv2这个模块问题甚多
 
@@ -93,7 +91,7 @@ redhat：使用源码进行编译
 源码编译见《numpy编译安装文档》
 
 
-（7）：安装编译opencv
+* （7）：安装编译opencv
 
 安装上面所需软件后，就可以动手编译安装opencv了
 
@@ -101,64 +99,64 @@ redhat：使用源码进行编译
 
 
 
-二、在centos6.5上离线搭建opencv3.2.0
+##二、在centos6.5上离线搭建opencv3.2.0
 
 
-1.官网给出的编译环境基本上与编译opencv2.4.13相同
+##1.官网给出的编译环境基本上与编译opencv2.4.13相同
 
 
 Required Packages
 
-    GCC 4.4.x or later
+    * GCC 4.4.x or later
     
-    CMake 2.8.7 or higher
+    * CMake 2.8.7 or higher
     
-    Git
+    * Git
     
-    GTK+2.x or higher, including headers (libgtk2.0-dev)
+    * GTK+2.x or higher, including headers (libgtk2.0-dev)
     
-    pkg-config
+    * pkg-config
     
-    Python 2.6 or later and Numpy 1.5 or later with developer packages (python-dev, python-numpy)
+    * Python 2.6 or later and Numpy 1.5 or later with developer packages (python-dev, python-numpy)
     
-    ffmpeg or libav development packages: libavcodec-dev, libavformat-dev, libswscale-dev
+    * ffmpeg or libav development packages: libavcodec-dev, libavformat-dev, libswscale-dev
     
-    [optional] libtbb2 libtbb-dev
+    * [optional] libtbb2 libtbb-dev
     
-    [optional] libdc1394 2.x
+    * [optional] libdc1394 2.x
     
-    [optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev, libdc1394-22-dev
+    * [optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev, libdc1394-22-dev
     
-    [optional] CUDA Toolkit 6.5 or higher
+    * [optional] CUDA Toolkit 6.5 or higher
     
-[compiler] sudo apt-get install build-essential
+    * [compiler] sudo apt-get install build-essential
 
-[required] sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+    * [required] sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 
-[optional] sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
-
-
-2.步骤：
-（1）安装gcc g++
-
-（2）安装cmake
-
-（3）安装gtk+2.x
-
-（4）安装ffmpeg
-
-（5）安装python
-
-（6）安装python-numpy
-
-（7）安装可选的依赖项
-
-（8）编译安装opencv3.2.0
+    * [optional] sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev  	   		    libdc1394-22-dev
 
 
-注：
+##2.步骤：
+*（1）安装gcc g++
 
-第（5）(6)步注意事项
+*（2）安装cmake
+
+*（3）安装gtk+2.x
+
+*（4）安装ffmpeg
+
+*（5）安装python
+
+*（6）安装python-numpy
+
+*（7）安装可选的依赖项
+
+*（8）编译安装opencv3.2.0
+
+
+##注：
+
+*第（5）(6)步注意事项
 
 因为在centos6.5上系统默认装的python版本为2.6.6，使用此版本编译opencv3.2.0会出现一个问题，即在 “make”到百分之九十几的时候会出现语法错误之类：
 
@@ -195,7 +193,7 @@ make: *** [all] Error 2
 /(python2.7安装路径下)/bin/python2.7 setup.py install
 
 
-第（8）步注意事项：先按照官网步骤执行：
+*第（8）步注意事项：先按照官网步骤执行：
 
 cd ~/opencv
 
@@ -261,7 +259,7 @@ source ~/.bashrc  #大功告成
 
 
 此时可以打开python:
-
+```shell
 [root@localhost Desktop]# python
 
 Python 2.7.13 (default, Mar 31 2017, 19:34:43) 
@@ -277,7 +275,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 '3.2.0'
 
 >>> 
-
+```
 
 
 问：1.找不到cv2？
