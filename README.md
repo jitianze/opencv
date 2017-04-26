@@ -202,8 +202,7 @@ cd build
 ```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D WITH_GPHOTO2=OFF -D PYTHON2_INCLUDE_DIR=/usr/local/python27/include/python2.7-D
 PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages
-/numpy/core/include -D PYTHON2_PACKAGES_PATH=lib/python2.7/site-packages -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib-
-3.2.0/modules -D CMAKE_INSTALL_PREFIX=/usr/local .. 
+/numpy/core/include -D PYTHON2_PACKAGES_PATH=/usr/local/python27/lib/python2.7/site-packages -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib-3.2.0/modules -D CMAKE_INSTALL_PREFIX=/usr/local .. 
 ```
 
 其中-D 的意思就是说后面要定义一些参数
@@ -216,7 +215,7 @@ PYTHON2_LIBRARY=/usr/local/python27/lib/libpython2.7.so -D PYTHON2_NUMPY_INCLUDE
 
 -D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/local/python27/lib/python2.7/site-packages/numpy/core/include  #手动定义numpy中include的位置
 
--D PYTHON2_PACKAGES_PATH=lib/python2.7/site-packages    #手动定义python包路径的位置
+-D PYTHON2_PACKAGES_PATH=/usr/local/python27/lib/python2.7/site-packages    #手动定义python包路径的位置
 
 -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib-3.2.0/modules  #定义opencv额外模块的位置 （OpenCV从2.x到3.x是一个很大的转变，
 
